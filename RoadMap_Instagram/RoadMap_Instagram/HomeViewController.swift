@@ -9,17 +9,28 @@ import UIKit
 
 /// Экран домашней страницы Инстаграма
 final class HomeViewController: UIViewController {
+    
     // MARK: - Constants
-    enum Constants {
+    private enum CellIdentifiers {
         static let stories = "StoriesCell"
         static let post = "PostCell"
         static let recommend = "RecomendationCell"
     }
+    
+    private enum TableCellTypes {
+        case stories
+        case post
+        case recomendation
+    }
+    
     // MARK: - IBOutlets
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet private var tableView: UITableView!
     
     // MARK: - Private Visual elements
-    private var refresher = UIRefreshControl()
+    private let refresherControl = UIRefreshControl()
+    
+    // MARK: - Private properties
+    private var tableCellTypes: [TableCellTypes] = [.stories, .post, .recomendation]
     
     // MARK: - Lifeсycle
     override func viewDidLoad() {
@@ -29,8 +40,8 @@ final class HomeViewController: UIViewController {
 
     // MARK: - Private methods
     private func setupUI() {
-        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        tableView.addSubview(refresher)
+        refresherControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        tableView.addSubview(refresherControl)
         createTable()
     }
     
@@ -40,7 +51,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func handleRefresh() {
-        refresher.endRefreshing()
+        refresherControl.endRefreshing()
     }
 }
 
@@ -48,33 +59,32 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - UITableViewDataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableCellTypes.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-        case 0:
-            guard let storiesCell = tableView.dequeueReusableCell(withIdentifier: Constants.stories,
-                                                           for: indexPath) as? StoriesTableViewCell, indexPath.row == 0
+        let screen = tableCellTypes[indexPath.row]
+        switch screen {
+        case .stories:
+            guard let storiesCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.stories,
+                                                                  for: indexPath) as? StoriesTableViewCell
             else { return UITableViewCell() }
             return storiesCell
-        case 1...3:
-            guard let postCell = tableView.dequeueReusableCell(withIdentifier: Constants.post,
+        case .post:
+            guard let postCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.post,
                                                                  for: indexPath) as? PostTableViewCell
             else { return UITableViewCell() }
             return postCell
-        case 4:
-            guard let recomendationCell = tableView.dequeueReusableCell(withIdentifier: Constants.recommend,
+        case .recomendation:
+            guard let recomendationCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.recommend,
                                                                  for: indexPath) as? RecomendationTableViewCell
             else { return UITableViewCell() }
             return recomendationCell
-        default:
-            break
         }
-        return UITableViewCell()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
 }

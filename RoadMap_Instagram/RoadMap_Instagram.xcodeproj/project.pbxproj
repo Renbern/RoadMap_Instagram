@@ -17,6 +17,7 @@
 		042A554E28FDEB8900792CF6 /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A554D28FDEB8900792CF6 /* StoriesTableViewCell.swift */; };
 		043DADA628FF343C009D4447 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DADA528FF343C009D4447 /* PostTableViewCell.swift */; };
 		043DADA828FF43DA009D4447 /* RecomendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DADA728FF43DA009D4447 /* RecomendationTableViewCell.swift */; };
+		0455405A2900557700FFBFBB /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045540592900557700FFBFBB /* PostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		042A554D28FDEB8900792CF6 /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		043DADA528FF343C009D4447 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		043DADA728FF43DA009D4447 /* RecomendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationTableViewCell.swift; sourceTree = "<group>"; };
+		045540592900557700FFBFBB /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				042A552028FDAAF300792CF6 /* LaunchScreen.storyboard */,
 				042A552328FDAAF300792CF6 /* Info.plist */,
 				042A554A28FDD82200792CF6 /* HomeViewController.swift */,
+				045540592900557700FFBFBB /* PostModel.swift */,
 			);
 			path = RoadMap_Instagram;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043DADA828FF43DA009D4447 /* RecomendationTableViewCell.swift in Sources */,
+				0455405A2900557700FFBFBB /* PostModel.swift in Sources */,
 				042A551A28FDAAF100792CF6 /* ViewController.swift in Sources */,
 				042A554E28FDEB8900792CF6 /* StoriesTableViewCell.swift in Sources */,
 				042A551628FDAAF100792CF6 /* AppDelegate.swift in Sources */,
