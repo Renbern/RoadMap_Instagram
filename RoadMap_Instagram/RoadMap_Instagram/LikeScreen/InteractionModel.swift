@@ -4,11 +4,13 @@
 //
 //  Created by Артур Щукин on 19.10.2022.
 //
+import Foundation
 
 /// Модель поста
-struct PostModel {
+struct InteractionModel {
     var imageName: String
-    var profileName: String
-    var like: String
-    var comment: String
+    var profileImageName: String
+    var commentText: String
+    var isSubscribe: Bool?
+    var timeText: String
 }

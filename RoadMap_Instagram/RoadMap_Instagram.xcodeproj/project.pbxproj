@@ -17,7 +17,12 @@
 		042A554E28FDEB8900792CF6 /* StoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042A554D28FDEB8900792CF6 /* StoriesTableViewCell.swift */; };
 		043DADA628FF343C009D4447 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DADA528FF343C009D4447 /* PostTableViewCell.swift */; };
 		043DADA828FF43DA009D4447 /* RecomendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DADA728FF43DA009D4447 /* RecomendationTableViewCell.swift */; };
-		0455405A2900557700FFBFBB /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045540592900557700FFBFBB /* PostModel.swift */; };
+		0455405A2900557700FFBFBB /* InteractionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045540592900557700FFBFBB /* InteractionModel.swift */; };
+		0455405C2900825B00FFBFBB /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455405B2900825B00FFBFBB /* LikeViewController.swift */; };
+		0455405F2900841900FFBFBB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0455405E2900841900FFBFBB /* CommentTableViewCell.swift */; };
+		045540612901C02A00FFBFBB /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045540602901C02A00FFBFBB /* String + Extension.swift */; };
+		04BFDA0C2901C9BE009BD8FF /* SubscribeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFDA0B2901C9BE009BD8FF /* SubscribeTableViewCell.swift */; };
+		04BFDA0E2901DE41009BD8FF /* NSMutableAttributedString + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFDA0D2901DE41009BD8FF /* NSMutableAttributedString + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +38,12 @@
 		042A554D28FDEB8900792CF6 /* StoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewCell.swift; sourceTree = "<group>"; };
 		043DADA528FF343C009D4447 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		043DADA728FF43DA009D4447 /* RecomendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationTableViewCell.swift; sourceTree = "<group>"; };
-		045540592900557700FFBFBB /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		045540592900557700FFBFBB /* InteractionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionModel.swift; sourceTree = "<group>"; };
+		0455405B2900825B00FFBFBB /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		0455405E2900841900FFBFBB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		045540602901C02A00FFBFBB /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		04BFDA0B2901C9BE009BD8FF /* SubscribeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeTableViewCell.swift; sourceTree = "<group>"; };
+		04BFDA0D2901DE41009BD8FF /* NSMutableAttributedString + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,24 +80,45 @@
 				042A551728FDAAF100792CF6 /* SceneDelegate.swift */,
 				042A551928FDAAF100792CF6 /* ViewController.swift */,
 				042A551B28FDAAF100792CF6 /* Main.storyboard */,
-				042A554C28FDEB4200792CF6 /* HomeScreenTable */,
+				044DE0032901E7AB00D50858 /* Extensions */,
+				042A554C28FDEB4200792CF6 /* HomeScreen */,
 				042A551E28FDAAF300792CF6 /* Assets.xcassets */,
 				042A552028FDAAF300792CF6 /* LaunchScreen.storyboard */,
 				042A552328FDAAF300792CF6 /* Info.plist */,
-				042A554A28FDD82200792CF6 /* HomeViewController.swift */,
-				045540592900557700FFBFBB /* PostModel.swift */,
+				0455405D290082A500FFBFBB /* LikeScreen */,
 			);
 			path = RoadMap_Instagram;
 			sourceTree = "<group>";
 		};
-		042A554C28FDEB4200792CF6 /* HomeScreenTable */ = {
+		042A554C28FDEB4200792CF6 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				042A554A28FDD82200792CF6 /* HomeViewController.swift */,
 				042A554D28FDEB8900792CF6 /* StoriesTableViewCell.swift */,
 				043DADA528FF343C009D4447 /* PostTableViewCell.swift */,
 				043DADA728FF43DA009D4447 /* RecomendationTableViewCell.swift */,
 			);
-			path = HomeScreenTable;
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		044DE0032901E7AB00D50858 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				045540602901C02A00FFBFBB /* String + Extension.swift */,
+				04BFDA0D2901DE41009BD8FF /* NSMutableAttributedString + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0455405D290082A500FFBFBB /* LikeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				045540592900557700FFBFBB /* InteractionModel.swift */,
+				0455405B2900825B00FFBFBB /* LikeViewController.swift */,
+				0455405E2900841900FFBFBB /* CommentTableViewCell.swift */,
+				04BFDA0B2901C9BE009BD8FF /* SubscribeTableViewCell.swift */,
+			);
+			path = LikeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,12 +215,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				043DADA828FF43DA009D4447 /* RecomendationTableViewCell.swift in Sources */,
-				0455405A2900557700FFBFBB /* PostModel.swift in Sources */,
+				04BFDA0C2901C9BE009BD8FF /* SubscribeTableViewCell.swift in Sources */,
+				04BFDA0E2901DE41009BD8FF /* NSMutableAttributedString + Extension.swift in Sources */,
+				0455405A2900557700FFBFBB /* InteractionModel.swift in Sources */,
+				0455405C2900825B00FFBFBB /* LikeViewController.swift in Sources */,
 				042A551A28FDAAF100792CF6 /* ViewController.swift in Sources */,
 				042A554E28FDEB8900792CF6 /* StoriesTableViewCell.swift in Sources */,
 				042A551628FDAAF100792CF6 /* AppDelegate.swift in Sources */,
 				042A551828FDAAF100792CF6 /* SceneDelegate.swift in Sources */,
+				045540612901C02A00FFBFBB /* String + Extension.swift in Sources */,
 				042A554B28FDD82200792CF6 /* HomeViewController.swift in Sources */,
+				0455405F2900841900FFBFBB /* CommentTableViewCell.swift in Sources */,
 				043DADA628FF343C009D4447 /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
