@@ -565,15 +565,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HCl-Lo-r4a">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HCl-Lo-r4a">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="todayCell" id="ulz-Hx-NdT" customClass="TodayTableViewCell" customModule="RoadMap_Instagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="76.333335876464844"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="commentCell" id="ulz-Hx-NdT" customClass="CommentTableViewCell" customModule="RoadMap_Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ulz-Hx-NdT" id="6jc-nv-CVp">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daredevil" translatesAutoresizingMaskIntoConstraints="NO" id="rS1-PU-Emz">
@@ -596,7 +596,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjk-2r-Zru">
-                                                    <rect key="frame" x="78" y="8.0000000000000036" width="260" height="60.333333333333343"/>
+                                                    <rect key="frame" x="78" y="8" width="258" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="262" id="QqN-Is-A9g"/>
                                                     </constraints>
@@ -609,7 +609,7 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rS1-PU-Emz" secondAttribute="bottom" constant="8" id="OMU-ft-9Fl"/>
                                                 <constraint firstItem="wTb-Am-EWf" firstAttribute="top" secondItem="6jc-nv-CVp" secondAttribute="top" constant="8" id="QH1-Jk-2D0"/>
                                                 <constraint firstItem="mjk-2r-Zru" firstAttribute="top" secondItem="6jc-nv-CVp" secondAttribute="top" constant="8" id="QKs-tY-VTk"/>
-                                                <constraint firstItem="wTb-Am-EWf" firstAttribute="leading" secondItem="mjk-2r-Zru" secondAttribute="trailing" constant="8" id="azv-xe-DlQ"/>
+                                                <constraint firstItem="wTb-Am-EWf" firstAttribute="leading" secondItem="mjk-2r-Zru" secondAttribute="trailing" constant="10" id="azv-xe-DlQ"/>
                                                 <constraint firstItem="rS1-PU-Emz" firstAttribute="top" secondItem="6jc-nv-CVp" secondAttribute="top" constant="8" id="fPA-ub-KDr"/>
                                                 <constraint firstAttribute="bottom" secondItem="mjk-2r-Zru" secondAttribute="bottom" constant="8" id="hRq-LG-oky"/>
                                                 <constraint firstItem="mjk-2r-Zru" firstAttribute="leading" secondItem="rS1-PU-Emz" secondAttribute="trailing" constant="10" id="kwR-Bd-K7r"/>
@@ -623,11 +623,11 @@
                                             <outlet property="subscriberImageView" destination="rS1-PU-Emz" id="Ma1-Be-Zqg"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="thisWeekCell" id="nB8-wS-4rt" customClass="ThisWeekTableViewCell" customModule="RoadMap_Instagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="126.33333587646484" width="414" height="76.333335876464844"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subscribeCell" id="nB8-wS-4rt" customClass="SubscribeTableViewCell" customModule="RoadMap_Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="126" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nB8-wS-4rt" id="I0b-wz-zb0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76.333335876464844"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daredevil" translatesAutoresizingMaskIntoConstraints="NO" id="TA3-mV-IAM">
@@ -642,39 +642,37 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Daredevil" translatesAutoresizingMaskIntoConstraints="NO" id="wOo-3h-cJe">
-                                                    <rect key="frame" x="346" y="8.0000000000000036" width="60" height="60.333333333333343"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="Cec-vs-9OY"/>
-                                                        <constraint firstAttribute="height" constant="60" id="bCU-yc-Nc2"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEk-Cw-uDg">
-                                                    <rect key="frame" x="78" y="8.0000000000000036" width="260" height="60.333333333333343"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="262" id="sqt-Dv-2Q5"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="78" y="8" width="202" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7G-EB-8Lm">
+                                                    <rect key="frame" x="290" y="26" width="116" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="RsH-Lk-Hxh"/>
+                                                        <constraint firstAttribute="width" constant="116" id="z6E-gZ-TXZ"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TA3-mV-IAM" secondAttribute="bottom" constant="8" id="A9C-L9-l3y"/>
+                                                <constraint firstAttribute="trailing" secondItem="S7G-EB-8Lm" secondAttribute="trailing" constant="8" id="CZt-bc-Mpx"/>
                                                 <constraint firstItem="aEk-Cw-uDg" firstAttribute="leading" secondItem="TA3-mV-IAM" secondAttribute="trailing" constant="10" id="Jkp-Mq-o74"/>
-                                                <constraint firstAttribute="bottom" secondItem="wOo-3h-cJe" secondAttribute="bottom" constant="8" id="Lm4-tM-WY3"/>
                                                 <constraint firstItem="TA3-mV-IAM" firstAttribute="top" secondItem="I0b-wz-zb0" secondAttribute="top" constant="8" id="Meb-kY-r8n"/>
-                                                <constraint firstAttribute="trailing" secondItem="wOo-3h-cJe" secondAttribute="trailing" constant="8" id="NI6-gf-Awv"/>
                                                 <constraint firstItem="TA3-mV-IAM" firstAttribute="leading" secondItem="I0b-wz-zb0" secondAttribute="leading" constant="8" id="aP4-fV-Fu6"/>
+                                                <constraint firstItem="S7G-EB-8Lm" firstAttribute="leading" secondItem="aEk-Cw-uDg" secondAttribute="trailing" constant="10" id="gTa-OH-vll"/>
+                                                <constraint firstItem="S7G-EB-8Lm" firstAttribute="centerY" secondItem="aEk-Cw-uDg" secondAttribute="centerY" id="hDj-wL-CSa"/>
                                                 <constraint firstItem="aEk-Cw-uDg" firstAttribute="top" secondItem="I0b-wz-zb0" secondAttribute="top" constant="8" id="oZN-LB-x2O"/>
                                                 <constraint firstAttribute="bottom" secondItem="aEk-Cw-uDg" secondAttribute="bottom" constant="8" id="sWX-Ds-jHC"/>
-                                                <constraint firstItem="wOo-3h-cJe" firstAttribute="leading" secondItem="aEk-Cw-uDg" secondAttribute="trailing" constant="8" id="wfC-eu-h8H"/>
-                                                <constraint firstItem="wOo-3h-cJe" firstAttribute="top" secondItem="I0b-wz-zb0" secondAttribute="top" constant="8" id="xpd-bA-65E"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="commentTextLabel" destination="aEk-Cw-uDg" id="uxH-YR-pb3"/>
-                                            <outlet property="interactedImageView" destination="wOo-3h-cJe" id="VPs-PU-vOh"/>
+                                            <outlet property="subscribeButton" destination="S7G-EB-8Lm" id="zNd-3s-L5e"/>
                                             <outlet property="subscriberImageView" destination="TA3-mV-IAM" id="ROc-fq-Cjf"/>
                                         </connections>
                                     </tableViewCell>

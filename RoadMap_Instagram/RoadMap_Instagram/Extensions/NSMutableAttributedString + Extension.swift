@@ -5,16 +5,21 @@
 //  Created by Артур Щукин on 20.10.2022.
 //
 
-import Foundation
 import UIKit
 
+// MARK: - Constants
+private enum Fonts {
+    static let SFProTextBold = "SF Pro Text-Bold"
+    static let SFProTextRegular = "SF Pro Text-Regular"
+}
+/// Кастомизация литерала строки
 extension NSMutableAttributedString {
     var fontSize: CGFloat { return 12 }
     var boldFont: UIFont {
-        return UIFont(name: "SF Pro Text-Bold", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
+        return UIFont(name: Fonts.SFProTextBold, size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
     }
     var normalFont: UIFont {
-        return UIFont(name: "SF Pro Text-Regular", size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
+        return UIFont(name: Fonts.SFProTextRegular, size: fontSize) ?? UIFont.systemFont(ofSize: fontSize)
     }
     
     func bold(_ value: String) -> NSMutableAttributedString {
@@ -23,7 +28,7 @@ extension NSMutableAttributedString {
             .font: boldFont
         ]
         
-        self.append(NSAttributedString(string: value, attributes: attributes))
+        append(NSAttributedString(string: value, attributes: attributes))
         return self
     }
     
@@ -33,7 +38,7 @@ extension NSMutableAttributedString {
             .font: normalFont,
         ]
         
-        self.append(NSAttributedString(string: value, attributes: attributes))
+        append(NSAttributedString(string: value, attributes: attributes))
         return self
     }
     
@@ -44,7 +49,7 @@ extension NSMutableAttributedString {
             .foregroundColor: UIColor.gray,
         ]
         
-        self.append(NSAttributedString(string: value, attributes: attributes))
+        append(NSAttributedString(string: value, attributes: attributes))
         return self
     }
 }

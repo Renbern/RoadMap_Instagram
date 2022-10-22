@@ -13,29 +13,41 @@ final class LikeViewController: UIViewController {
     // MARK: - Constants
     private enum Constants {
         enum CellIdentifiers {
-            static let today = "todayCell"
-            static let thisWeek = "thisWeekCell"
+            static let comment = "commentCell"
+            static let subscribe = "subscribeCell"
         }
         
         enum ImageNames {
             static let deadpool = "Deadpool"
             static let wolverine = "Wolverine"
             static let daredevil = "Daredevil"
+            static let goblin = "Goblin"
             static let bros = "Bros"
             static let withMiles = "WithMiles"
+            static let octopus = "DocOc"
             static let withoutMask = "WithoutMask"
+            static let flight = "Flight"
+            static let maryJane = "MJ"
+            static let scientist = "Scientist"
         }
         
         enum TextForLikeUI {
             static let today = "Cегодня"
             static let thisWeek = "На этой неделе"
-            static let likeText = "Нравится"
-            static let wolverineComment = "Arrrrrgh!!!"
-            static let deadpoolComment = "Ты похож на пережаренную чимичангу!"
-            static let daredevilComment = "Не вижу ничего плохого"
-            static let threeDays = "5 ч."
+            static let subscribeButtonText = "Подписаться"
+            static let wolverineComment = "Прокомментировал(-а) Arrrrrgh!!!"
+            static let deadpoolComment = "Прокомментировал(-а) Ты похож на пережаренную чимичангу!"
+            static let daredevilComment = "Прокомментировал(-а) Не вижу ничего плохого"
+            static let maryJaneComment = "Прокомментировал(-а) 🕷🕷🕷 #Spider_Power!"
+            static let subscribedText = "Подписался(-ась) на ваши обновления"
+            static let subscribeText = "Есть в Instagram. Вы можете знать этого человека"
+            static let scientistComment = "Знаете, я тоже своего рода ученый! 🧪👨‍🔬"
+            static let threeHours = "3 ч."
             static let twoHours = "2 ч."
             static let oneHour = "1 ч."
+            static let fourDays = "4 д."
+            static let twoDays = "2 д."
+            static let oneDay = "1 д."
         }
         
         enum ColorsForUI {
@@ -48,14 +60,17 @@ final class LikeViewController: UIViewController {
         }
     }
     
-    // MARK: - Private Visual elements
+    // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
+    
+    // MARK: - Private visual components
     private let refresherControl = UIRefreshControl()
     
     // MARK: - Private properties
-    private var interactions: [InteractionModel] = []
+    private var interactionsToday: [InteractionModel] = []
+    private var interactionsThisWeek: [InteractionModel] = []
     private var tableCellTypes: [Constants.TableCellTypes] = [.today, .thisWeek]
-    private let today = TodayTableViewCell()
+    private let today = CommentTableViewCell()
     
     // MARK: - Lifeсycle
     override func viewDidLoad() {
@@ -65,7 +80,7 @@ final class LikeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - Private methods
@@ -78,29 +93,49 @@ final class LikeViewController: UIViewController {
         tableView.addSubview(refresherControl)
         createTable()
         createInteraction()
+        createThisWeekInteraction()
     }
     
     private func  createInteraction() -> [InteractionModel] {
-        interactions = [InteractionModel(imageName: Constants.ImageNames.bros,
-                                         profileName: Constants.ImageNames.wolverine,
-                                         profileImageName: Constants.ImageNames.wolverine,
-                                         likeText: Constants.TextForLikeUI.likeText,
-                                         commentText: Constants.TextForLikeUI.wolverineComment,
-                                         timeText: Constants.TextForLikeUI.oneHour),
-                        InteractionModel(imageName: Constants.ImageNames.withoutMask,
-                                         profileName: Constants.ImageNames.deadpool,
-                                         profileImageName: Constants.ImageNames.deadpool,
-                                         likeText: Constants.TextForLikeUI.likeText,
-                                         commentText: Constants.TextForLikeUI.deadpoolComment,
-                                         timeText: Constants.TextForLikeUI.threeDays),
-                        InteractionModel(imageName: Constants.ImageNames.withMiles,
-                                         profileName: Constants.ImageNames.daredevil,
-                                         profileImageName: Constants.ImageNames.daredevil,
-                                         likeText: Constants.TextForLikeUI.likeText,
-                                         commentText: Constants.TextForLikeUI.daredevilComment,
-                                         timeText: Constants.TextForLikeUI.twoHours)
-                        ]
-        return interactions
+        interactionsToday = [InteractionModel(imageName: Constants.ImageNames.bros,
+                                              profileImageName: Constants.ImageNames.wolverine,
+                                              commentText: Constants.TextForLikeUI.wolverineComment,
+                                              timeText: Constants.TextForLikeUI.oneHour),
+                             InteractionModel(imageName: Constants.ImageNames.withoutMask,
+                                              profileImageName: Constants.ImageNames.deadpool,
+                                              commentText: Constants.TextForLikeUI.subscribeText,
+                                              isSubscribe: false,
+                                              timeText: Constants.TextForLikeUI.threeHours),
+                             InteractionModel(imageName: Constants.ImageNames.withMiles,
+                                              profileImageName: Constants.ImageNames.daredevil,
+                                              commentText: Constants.TextForLikeUI.daredevilComment,
+                                              timeText: Constants.TextForLikeUI.twoHours),
+                             InteractionModel(imageName: Constants.ImageNames.scientist,
+                                              profileImageName: Constants.ImageNames.octopus,
+                                              commentText: Constants.TextForLikeUI.scientistComment,
+                                              timeText: Constants.TextForLikeUI.twoHours)
+        ]
+        return interactionsToday
+    }
+    
+    private func createThisWeekInteraction() -> [InteractionModel] {
+        interactionsThisWeek = [InteractionModel(imageName: Constants.ImageNames.withoutMask,
+                                                 profileImageName: Constants.ImageNames.maryJane,
+                                                 commentText: Constants.TextForLikeUI.maryJaneComment,
+                                                 isSubscribe: nil,
+                                                 timeText: Constants.TextForLikeUI.fourDays),
+                                InteractionModel(imageName: Constants.ImageNames.flight,
+                                                 profileImageName: Constants.ImageNames.goblin,
+                                                 commentText: Constants.TextForLikeUI.subscribedText,
+                                                 isSubscribe: false,
+                                                 timeText: Constants.TextForLikeUI.oneDay),
+                                InteractionModel(imageName: Constants.ImageNames.octopus,
+                                                 profileImageName: Constants.ImageNames.octopus,
+                                                 commentText: Constants.TextForLikeUI.subscribedText,
+                                                 isSubscribe: true,
+                                                 timeText: Constants.TextForLikeUI.oneDay)
+        ]
+        return interactionsThisWeek
     }
     
     private func createTable() {
@@ -109,10 +144,9 @@ final class LikeViewController: UIViewController {
     }
 }
 
-// MARK: - Extemsion
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    // MARK: - UITableViewDataSource
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableCellTypes.count
     }
@@ -121,9 +155,9 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
         let type = tableCellTypes[section]
         switch type {
         case .today:
-            return interactions.count
+            return interactionsToday.count
         case .thisWeek:
-            return interactions.count
+            return interactionsThisWeek.count
         }
     }
     
@@ -147,19 +181,39 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
         let type = tableCellTypes[indexPath.section]
         switch type {
         case .today:
-            let model = interactions[indexPath.row]
-            guard let todayCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.today,
-                                                                for: indexPath) as? TodayTableViewCell else {
-                return UITableViewCell() }
-            todayCell.refresh(model)
-            return todayCell
+            let model = interactionsToday[indexPath.row]
+            if let subscribe = model.isSubscribe {
+                guard let thisWeekCell = tableView.dequeueReusableCell(
+                    withIdentifier: Constants.CellIdentifiers.subscribe,
+                    for: indexPath
+                ) as? SubscribeTableViewCell
+                else { return UITableViewCell() }
+                thisWeekCell.refresh(model)
+                return thisWeekCell
+            } else {
+                guard let todayCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.comment,
+                                                                    for: indexPath) as? CommentTableViewCell
+                else { return UITableViewCell() }
+                todayCell.refresh(model)
+                return todayCell
+            }
         case .thisWeek:
-            let model = interactions[indexPath.row]
-            guard let thisWeekCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.thisWeek,
-                                                                for: indexPath) as? ThisWeekTableViewCell else {
-                return UITableViewCell() }
-            thisWeekCell.refresh(model)
-            return thisWeekCell
+            let model = interactionsThisWeek[indexPath.row]
+            if let subscribe = model.isSubscribe {
+                guard let thisWeekCell = tableView.dequeueReusableCell(
+                    withIdentifier: Constants.CellIdentifiers.subscribe,
+                    for: indexPath
+                ) as? SubscribeTableViewCell
+                else { return UITableViewCell() }
+                thisWeekCell.refresh(model)
+                return thisWeekCell
+            } else {
+                guard let todayCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.comment,
+                                                                    for: indexPath) as? CommentTableViewCell
+                else { return UITableViewCell() }
+                todayCell.refresh(model)
+                return todayCell
+            }
         }
     }
 }

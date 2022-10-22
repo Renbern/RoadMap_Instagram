@@ -9,9 +9,8 @@ import Foundation
 /// Модель поста
 struct InteractionModel {
     var imageName: String
-    var profileName: String
     var profileImageName: String
-    var likeText: String
     var commentText: String
+    var isSubscribe: Bool?
     var timeText: String
 }
