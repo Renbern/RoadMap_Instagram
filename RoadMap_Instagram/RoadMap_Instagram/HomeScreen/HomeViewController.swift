@@ -55,10 +55,8 @@ final class HomeViewController: UIViewController {
     }
 }
 
-    // MARK: - Extemsion
+    // MARK: - UITableViewDelegate, UITableViewDataSource
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    // MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

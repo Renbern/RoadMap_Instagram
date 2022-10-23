@@ -9,12 +9,13 @@ import UIKit
 
 /// Экран лайков и ответов
 final class LikeViewController: UIViewController {
-
+    
     // MARK: - Constants
     private enum Constants {
         enum CellIdentifiers {
             static let comment = "commentCell"
             static let subscribe = "subscribeCell"
+            static let request = "requestCell"
         }
         
         enum ImageNames {
@@ -34,6 +35,7 @@ final class LikeViewController: UIViewController {
         enum TextForLikeUI {
             static let today = "Cегодня"
             static let thisWeek = "На этой неделе"
+            
             static let subscribeButtonText = "Подписаться"
             static let wolverineComment = "Прокомментировал(-а) Arrrrrgh!!!"
             static let deadpoolComment = "Прокомментировал(-а) Ты похож на пережаренную чимичангу!"
@@ -57,6 +59,7 @@ final class LikeViewController: UIViewController {
         enum TableCellTypes {
             case today
             case thisWeek
+            case request
         }
     }
     
@@ -69,7 +72,7 @@ final class LikeViewController: UIViewController {
     // MARK: - Private properties
     private var interactionsToday: [InteractionModel] = []
     private var interactionsThisWeek: [InteractionModel] = []
-    private var tableCellTypes: [Constants.TableCellTypes] = [.today, .thisWeek]
+    private var tableCellTypes: [Constants.TableCellTypes] = [.request, .today, .thisWeek]
     private let today = CommentTableViewCell()
     
     // MARK: - Lifeсycle
@@ -77,12 +80,12 @@ final class LikeViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     // MARK: - Private methods
     @objc private func handleRefresh() {
         refresherControl.endRefreshing()
@@ -146,7 +149,7 @@ final class LikeViewController: UIViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableCellTypes.count
     }
@@ -158,6 +161,8 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
             return interactionsToday.count
         case .thisWeek:
             return interactionsThisWeek.count
+        case .request:
+            return 1
         }
     }
     
@@ -169,10 +174,13 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        let type = tableCellTypes[section]
+        switch type {
+        case .request:
+            return nil
+        case .today:
             return Constants.TextForLikeUI.today
-        default:
+        case .thisWeek:
             return Constants.TextForLikeUI.thisWeek
         }
     }
@@ -180,20 +188,23 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let type = tableCellTypes[indexPath.section]
         switch type {
+        case .request:
+            let requestCell = tableView.dequeueReusableCell(
+                withIdentifier: Constants.CellIdentifiers.request,
+                for: indexPath)
+            return requestCell
         case .today:
             let model = interactionsToday[indexPath.row]
             if let subscribe = model.isSubscribe {
                 guard let thisWeekCell = tableView.dequeueReusableCell(
                     withIdentifier: Constants.CellIdentifiers.subscribe,
-                    for: indexPath
-                ) as? SubscribeTableViewCell
-                else { return UITableViewCell() }
+                    for: indexPath) as? SubscribeTableViewCell else { return UITableViewCell() }
                 thisWeekCell.refresh(model)
                 return thisWeekCell
             } else {
-                guard let todayCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.comment,
-                                                                    for: indexPath) as? CommentTableViewCell
-                else { return UITableViewCell() }
+                guard let todayCell = tableView.dequeueReusableCell(
+                    withIdentifier: Constants.CellIdentifiers.comment,
+                    for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
                 todayCell.refresh(model)
                 return todayCell
             }
@@ -202,15 +213,13 @@ extension LikeViewController: UITableViewDelegate, UITableViewDataSource {
             if let subscribe = model.isSubscribe {
                 guard let thisWeekCell = tableView.dequeueReusableCell(
                     withIdentifier: Constants.CellIdentifiers.subscribe,
-                    for: indexPath
-                ) as? SubscribeTableViewCell
-                else { return UITableViewCell() }
+                    for: indexPath) as? SubscribeTableViewCell else { return UITableViewCell() }
                 thisWeekCell.refresh(model)
                 return thisWeekCell
             } else {
-                guard let todayCell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.comment,
-                                                                    for: indexPath) as? CommentTableViewCell
-                else { return UITableViewCell() }
+                guard let todayCell = tableView.dequeueReusableCell(
+                    withIdentifier: Constants.CellIdentifiers.comment,
+                    for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
                 todayCell.refresh(model)
                 return todayCell
             }
