@@ -18,13 +18,13 @@ final class SearchViewController: UIViewController {
         static let archive = "archiveCell"
         static let post = "postCell"
         }
-    }
-    
-    private enum TableCellTypes {
-        case subscribeInfo
-        case profileInfo
-        case acrhive
-        case post
+        
+        enum TableCellTypes {
+            case subscribeInfo
+            case profileInfo
+            case acrhive
+            case post
+        }
     }
     
     // MARK: - IBOutlets
@@ -34,7 +34,7 @@ final class SearchViewController: UIViewController {
     private let refresherControl = UIRefreshControl()
     
     // MARK: - Private properties
-    private var tableCellTypes: [TableCellTypes] = [.subscribeInfo, .profileInfo, .acrhive, .post]
+    private var tableCellTypes: [Constants.TableCellTypes] = [.subscribeInfo, .profileInfo, .acrhive, .post]
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ final class SearchViewController: UIViewController {
     
     // MARK: - Private methods
     private func setupUI() {
-        refresherControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        refresherControl.addTarget(self, action: #selector(handleRefreshAction), for: .valueChanged)
         tableView.addSubview(refresherControl)
         createTable()
     }
@@ -54,7 +54,7 @@ final class SearchViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    @objc private func handleRefresh() {
+    @objc private func handleRefreshAction() {
         refresherControl.endRefreshing()
     }
 }

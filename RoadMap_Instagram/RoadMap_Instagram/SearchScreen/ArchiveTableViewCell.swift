@@ -13,18 +13,18 @@ final class ArchiveTableViewCell: UITableViewCell {
     // MARK: - Constants
     private enum Constants {
         static let importantName = "Важное"
-        static let highlightName = "Важное"
-        static let partyName = "Важное"
-        static let altronName = "Важное"
-        static let familyName = "Важное"
-        static let starkCorpName = "Важное"
-        static let avangersName = "Важное"
+        static let highlightName = "Highlights"
+        static let partyName = "Party"
+        static let altronName = "#altron"
+        static let familyName = "Family"
+        static let starkCorpName = "Stark lmtd."
+        static let avangersName = "Avangers"
         static let highlightIcon = "archiveIcon"
         static let cellIdentificator = "archiveCollectionViewCell"
     }
     
     // MARK: - IBOutlets
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Private properties
     var archiveItems: [Archive] {
@@ -59,10 +59,6 @@ final class ArchiveTableViewCell: UITableViewCell {
     }
     
     // MARK: - Lifecycle
-    override class func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupUI()
@@ -80,13 +76,14 @@ extension ArchiveTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return archiveItems.count
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let itemCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: Constants.cellIdentificator,
             for: indexPath) as? ArchiveCollectionViewCell {
-            let model = archiveItems[indexPath.row]
-            itemCell.refresh(model)
+            let archiveItem = archiveItems[indexPath.row]
+            itemCell.refresh(archiveItem)
             return itemCell
         }
         return UICollectionViewCell()
